@@ -55,7 +55,7 @@ export class CowProtocolApi implements ICredentialType {
 
 	test: ICredentialTestRequest = {
 			"request": {
-				"baseURL": "={{ $credentials.baseUrl }}",
+				"baseURL": "={{ $credentials.url }}",
 				"url": "/api/v1/version",
 				"method": "GET"
 			}

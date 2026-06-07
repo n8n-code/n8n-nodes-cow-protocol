@@ -1,6 +1,6 @@
 {
   "name": "@n8n-dev/n8n-nodes-cow-protocol",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "CoW Protocol batch auction DEX aggregator with MEV protection for gasless and secure token swaps across multiple chains",
   "license": "MIT",
   "homepage": "https://n8n-code.github.io/n8n-dev/#/n8n-nodes-cow-protocol",
