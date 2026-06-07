@@ -1,0 +1,1 @@
+export { defaultDescription } from './default';
