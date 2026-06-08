@@ -10,7 +10,7 @@ export class CowProtocolApi implements ICredentialType {
 
 	displayName = 'cow-protocol API';
 
-	icon: Icon = { light: 'file:../nodes/CowProtocol/cow-protocol.svg', dark: 'file:../nodes/CowProtocol/cow-protocol.dark.svg' };
+	icon: Icon = { light: 'file:../nodes/CowProtocol/cow-protocol.png', dark: 'file:../nodes/CowProtocol/cow-protocol.dark.png' };
 
 	documentationUrl = '';
 

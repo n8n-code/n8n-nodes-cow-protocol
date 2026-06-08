@@ -5,7 +5,7 @@ export class CowProtocol implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'cow-protocol',
 		name: 'N8nDevCowProtocol',
-		icon: { light: 'file:./cow-protocol.svg', dark: 'file:./cow-protocol.dark.svg' },
+		icon: { light: 'file:./cow-protocol.png', dark: 'file:./cow-protocol.dark.png' },
 		group: ['input'],
 		version: 1,
 		subtitle: '={{\$parameter["operation"] + ": " + \$parameter["resource"]}}',
