@@ -8,7 +8,7 @@ import type {
 export class CowProtocolApi implements ICredentialType {
 	name = 'N8nDevCowProtocolApi';
 
-	displayName = 'cow-protocol API';
+	displayName = 'Cow Protocol API';
 
 	icon: Icon = { light: 'file:../nodes/CowProtocol/cow-protocol.png', dark: 'file:../nodes/CowProtocol/cow-protocol.dark.png' };
 
@@ -22,7 +22,7 @@ export class CowProtocolApi implements ICredentialType {
 			default: 'https://api.cow.fi/mainnet',
 			required: true,
 			placeholder: 'https://api.cow.fi/mainnet',
-			description: 'The base URL of your cow-protocol API server',
+			description: 'The base URL of your Cow Protocol API server',
 		},
 		{
 			displayName: 'API Key',

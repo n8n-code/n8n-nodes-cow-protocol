@@ -2653,11 +2653,12 @@
             "nullable": true
           },
           "clearingPrices": {
+            "deprecated": true,
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/BigUint"
             },
-            "description": "The prices of tokens for settled user orders as passed to the settlement contract.\n"
+            "description": "Deprecated. The autopilot no longer persists per-solution uniform clearing prices, so this field will be empty for solutions of auctions produced by recent autopilots. Solutions stored before this change keep their original values.\n\nThe prices of tokens for settled user orders as passed to the settlement contract.\n"
           },
           "orders": {
             "type": "array",

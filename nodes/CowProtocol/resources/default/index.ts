@@ -87,8 +87,8 @@ export const defaultDescription: INodeProperties[] = [
 					}
 				},
 				{
-					"name": "Get Trades V 2",
-					"value": "Get Trades V 2",
+					"name": "Get Trades v2",
+					"value": "Get Trades v2",
 					"action": "Get existing trades (paginated).",
 					"description": "Exactly one of `owner` or `orderUid` must be set.\n\nResults are paginated and sorted by block number and log index descending (newest trades first).\n\nTo enumerate all trades start with `offset` 0 and keep increasing the\n`offset` by the total number of returned results. When a response\ncontains less than `limit` the last page has been reached.\n",
 					"routing": {
@@ -147,8 +147,8 @@ export const defaultDescription: INodeProperties[] = [
 					}
 				},
 				{
-					"name": "Get Solver Competition By Auction Id V 2",
-					"value": "Get Solver Competition By Auction Id V 2",
+					"name": "Get Solver Competition By Auction ID v2",
+					"value": "Get Solver Competition By Auction ID v2",
 					"action": "Get information about a solver competition.",
 					"description": "Returns the competition information by `auction_id`.\n",
 					"routing": {
@@ -159,8 +159,8 @@ export const defaultDescription: INodeProperties[] = [
 					}
 				},
 				{
-					"name": "Get Solver Competition By Tx Hash V 2",
-					"value": "Get Solver Competition By Tx Hash V 2",
+					"name": "Get Solver Competition By Tx Hash v2",
+					"value": "Get Solver Competition By Tx Hash v2",
 					"action": "Get information about solver competition.",
 					"description": "Returns the competition information by `tx_hash`.\n",
 					"routing": {
@@ -171,8 +171,8 @@ export const defaultDescription: INodeProperties[] = [
 					}
 				},
 				{
-					"name": "Get Solver Competition Latest V 2",
-					"value": "Get Solver Competition Latest V 2",
+					"name": "Get Solver Competition Latest v2",
+					"value": "Get Solver Competition Latest v2",
 					"action": "Get information about the most recent solver competition.",
 					"description": "Returns the competition information for the last seen auction_id.\n",
 					"routing": {
@@ -183,8 +183,8 @@ export const defaultDescription: INodeProperties[] = [
 					}
 				},
 				{
-					"name": "Get Api Version",
-					"value": "Get Api Version",
+					"name": "Get API Version",
+					"value": "Get API Version",
 					"action": "Get the API's current deployed version.",
 					"description": "Returns the git commit hash, branch name and release tag (code: https://github.com/cowprotocol/services).\n",
 					"routing": {
@@ -713,7 +713,7 @@ export const defaultDescription: INodeProperties[] = [
 			}
 		},
 		{
-			"displayName": "Quote Id",
+			"displayName": "Quote ID",
 			"name": "quoteId",
 			"type": "number",
 			"default": 0,
@@ -983,9 +983,9 @@ export const defaultDescription: INodeProperties[] = [
 			"displayName": "UID",
 			"name": "UID",
 			"required": true,
-			"description": "Unique identifier for the order: 56 bytes encoded as hex with `0x`\nprefix.\n\nBytes 0..32 are the order digest, bytes 30..52 the owner address and\nbytes 52..56 the expiry (`validTo`) as a `uint32` unix epoch timestamp.",
 			"default": "0xff2e2e54d178997f173266817c1e9ed6fee1a1aae4b43971c53b543cffcc2969845c6f5599fbb25dbdd1b9b013daf85c03f3c63763e4bc4a",
 			"type": "string",
+			"description": "Unique identifier for the order: 56 bytes encoded as hex with `0x`\nprefix.\n\nBytes 0..32 are the order digest, bytes 30..52 the owner address and\nbytes 52..56 the expiry (`validTo`) as a `uint32` unix epoch timestamp.",
 			"displayOptions": {
 				"show": {
 					"resource": [
@@ -1020,9 +1020,9 @@ export const defaultDescription: INodeProperties[] = [
 			"displayName": "UID",
 			"name": "UID",
 			"required": true,
-			"description": "Unique identifier for the order: 56 bytes encoded as hex with `0x`\nprefix.\n\nBytes 0..32 are the order digest, bytes 30..52 the owner address and\nbytes 52..56 the expiry (`validTo`) as a `uint32` unix epoch timestamp.",
 			"default": "0xff2e2e54d178997f173266817c1e9ed6fee1a1aae4b43971c53b543cffcc2969845c6f5599fbb25dbdd1b9b013daf85c03f3c63763e4bc4a",
 			"type": "string",
+			"description": "Unique identifier for the order: 56 bytes encoded as hex with `0x`\nprefix.\n\nBytes 0..32 are the order digest, bytes 30..52 the owner address and\nbytes 52..56 the expiry (`validTo`) as a `uint32` unix epoch timestamp.",
 			"displayOptions": {
 				"show": {
 					"resource": [
@@ -1057,9 +1057,9 @@ export const defaultDescription: INodeProperties[] = [
 			"displayName": "Tx Hash",
 			"name": "txHash",
 			"required": true,
-			"description": "32 byte digest encoded as a hex with `0x` prefix.",
 			"default": "0xd51f28edffcaaa76be4a22f6375ad289272c037f3cc072345676e88d92ced8b5",
 			"type": "string",
+			"description": "32 byte digest encoded as a hex with `0x` prefix.",
 			"displayOptions": {
 				"show": {
 					"resource": [
@@ -1085,7 +1085,7 @@ export const defaultDescription: INodeProperties[] = [
 						"Default"
 					],
 					"operation": [
-						"Get Trades V 2"
+						"Get Trades v2"
 					]
 				}
 			}
@@ -1093,9 +1093,9 @@ export const defaultDescription: INodeProperties[] = [
 		{
 			"displayName": "Owner",
 			"name": "owner",
-			"description": "20 byte Ethereum address encoded as a hex with `0x` prefix.",
 			"default": "0x6810e776880c02933d47db1b9fc05908e5386b96",
 			"type": "string",
+			"description": "20 byte Ethereum address encoded as a hex with `0x` prefix.",
 			"routing": {
 				"send": {
 					"type": "query",
@@ -1110,7 +1110,7 @@ export const defaultDescription: INodeProperties[] = [
 						"Default"
 					],
 					"operation": [
-						"Get Trades V 2"
+						"Get Trades v2"
 					]
 				}
 			}
@@ -1118,9 +1118,9 @@ export const defaultDescription: INodeProperties[] = [
 		{
 			"displayName": "Order Uid",
 			"name": "orderUid",
-			"description": "Unique identifier for the order: 56 bytes encoded as hex with `0x`\nprefix.\n\nBytes 0..32 are the order digest, bytes 30..52 the owner address and\nbytes 52..56 the expiry (`validTo`) as a `uint32` unix epoch timestamp.",
 			"default": "0xff2e2e54d178997f173266817c1e9ed6fee1a1aae4b43971c53b543cffcc2969845c6f5599fbb25dbdd1b9b013daf85c03f3c63763e4bc4a",
 			"type": "string",
+			"description": "Unique identifier for the order: 56 bytes encoded as hex with `0x`\nprefix.\n\nBytes 0..32 are the order digest, bytes 30..52 the owner address and\nbytes 52..56 the expiry (`validTo`) as a `uint32` unix epoch timestamp.",
 			"routing": {
 				"send": {
 					"type": "query",
@@ -1135,7 +1135,7 @@ export const defaultDescription: INodeProperties[] = [
 						"Default"
 					],
 					"operation": [
-						"Get Trades V 2"
+						"Get Trades v2"
 					]
 				}
 			}
@@ -1160,7 +1160,7 @@ export const defaultDescription: INodeProperties[] = [
 						"Default"
 					],
 					"operation": [
-						"Get Trades V 2"
+						"Get Trades v2"
 					]
 				}
 			}
@@ -1185,7 +1185,7 @@ export const defaultDescription: INodeProperties[] = [
 						"Default"
 					],
 					"operation": [
-						"Get Trades V 2"
+						"Get Trades v2"
 					]
 				}
 			}
@@ -1232,9 +1232,9 @@ export const defaultDescription: INodeProperties[] = [
 			"displayName": "Owner",
 			"name": "owner",
 			"required": true,
-			"description": "20 byte Ethereum address encoded as a hex with `0x` prefix.",
 			"default": "0x6810e776880c02933d47db1b9fc05908e5386b96",
 			"type": "string",
+			"description": "20 byte Ethereum address encoded as a hex with `0x` prefix.",
 			"displayOptions": {
 				"show": {
 					"resource": [
@@ -1319,9 +1319,9 @@ export const defaultDescription: INodeProperties[] = [
 			"displayName": "Token",
 			"name": "token",
 			"required": true,
-			"description": "20 byte Ethereum address encoded as a hex with `0x` prefix.",
 			"default": "0x6810e776880c02933d47db1b9fc05908e5386b96",
 			"type": "string",
+			"description": "20 byte Ethereum address encoded as a hex with `0x` prefix.",
 			"displayOptions": {
 				"show": {
 					"resource": [
@@ -1382,13 +1382,13 @@ export const defaultDescription: INodeProperties[] = [
 						"Default"
 					],
 					"operation": [
-						"Get Solver Competition By Auction Id V 2"
+						"Get Solver Competition By Auction ID v2"
 					]
 				}
 			}
 		},
 		{
-			"displayName": "Auction Id",
+			"displayName": "Auction ID",
 			"name": "auction_id",
 			"required": true,
 			"default": 0,
@@ -1399,7 +1399,7 @@ export const defaultDescription: INodeProperties[] = [
 						"Default"
 					],
 					"operation": [
-						"Get Solver Competition By Auction Id V 2"
+						"Get Solver Competition By Auction ID v2"
 					]
 				}
 			}
@@ -1418,7 +1418,7 @@ export const defaultDescription: INodeProperties[] = [
 						"Default"
 					],
 					"operation": [
-						"Get Solver Competition By Tx Hash V 2"
+						"Get Solver Competition By Tx Hash v2"
 					]
 				}
 			}
@@ -1436,7 +1436,7 @@ export const defaultDescription: INodeProperties[] = [
 						"Default"
 					],
 					"operation": [
-						"Get Solver Competition By Tx Hash V 2"
+						"Get Solver Competition By Tx Hash v2"
 					]
 				}
 			}
@@ -1455,7 +1455,7 @@ export const defaultDescription: INodeProperties[] = [
 						"Default"
 					],
 					"operation": [
-						"Get Solver Competition Latest V 2"
+						"Get Solver Competition Latest v2"
 					]
 				}
 			}
@@ -1474,7 +1474,7 @@ export const defaultDescription: INodeProperties[] = [
 						"Default"
 					],
 					"operation": [
-						"Get Api Version"
+						"Get API Version"
 					]
 				}
 			}
@@ -1502,9 +1502,9 @@ export const defaultDescription: INodeProperties[] = [
 			"displayName": "App Data Hash",
 			"name": "app_data_hash",
 			"required": true,
-			"description": "32 bytes encoded as hex with `0x` prefix.\nIt's expected to be the hash of the stringified JSON object representing the `appData`.\n",
 			"default": "0x0000000000000000000000000000000000000000000000000000000000000000",
 			"type": "string",
+			"description": "32 bytes encoded as hex with `0x` prefix.\nIt's expected to be the hash of the stringified JSON object representing the `appData`.\n",
 			"displayOptions": {
 				"show": {
 					"resource": [
@@ -1539,9 +1539,9 @@ export const defaultDescription: INodeProperties[] = [
 			"displayName": "App Data Hash",
 			"name": "app_data_hash",
 			"required": true,
-			"description": "32 bytes encoded as hex with `0x` prefix.\nIt's expected to be the hash of the stringified JSON object representing the `appData`.\n",
 			"default": "0x0000000000000000000000000000000000000000000000000000000000000000",
 			"type": "string",
+			"description": "32 bytes encoded as hex with `0x` prefix.\nIt's expected to be the hash of the stringified JSON object representing the `appData`.\n",
 			"displayOptions": {
 				"show": {
 					"resource": [
@@ -1645,9 +1645,9 @@ export const defaultDescription: INodeProperties[] = [
 			"displayName": "Address",
 			"name": "address",
 			"required": true,
-			"description": "20 byte Ethereum address encoded as a hex with `0x` prefix.",
 			"default": "0x6810e776880c02933d47db1b9fc05908e5386b96",
 			"type": "string",
+			"description": "20 byte Ethereum address encoded as a hex with `0x` prefix.",
 			"displayOptions": {
 				"show": {
 					"resource": [
@@ -2164,9 +2164,9 @@ export const defaultDescription: INodeProperties[] = [
 			"displayName": "Uid",
 			"name": "uid",
 			"required": true,
-			"description": "Unique identifier for the order: 56 bytes encoded as hex with `0x`\nprefix.\n\nBytes 0..32 are the order digest, bytes 30..52 the owner address and\nbytes 52..56 the expiry (`validTo`) as a `uint32` unix epoch timestamp.",
 			"default": "0xff2e2e54d178997f173266817c1e9ed6fee1a1aae4b43971c53b543cffcc2969845c6f5599fbb25dbdd1b9b013daf85c03f3c63763e4bc4a",
 			"type": "string",
+			"description": "Unique identifier for the order: 56 bytes encoded as hex with `0x`\nprefix.\n\nBytes 0..32 are the order digest, bytes 30..52 the owner address and\nbytes 52..56 the expiry (`validTo`) as a `uint32` unix epoch timestamp.",
 			"displayOptions": {
 				"show": {
 					"resource": [
@@ -2226,9 +2226,9 @@ export const defaultDescription: INodeProperties[] = [
 			"displayName": "Uid",
 			"name": "uid",
 			"required": true,
-			"description": "Unique identifier for the order: 56 bytes encoded as hex with `0x`\nprefix.\n\nBytes 0..32 are the order digest, bytes 30..52 the owner address and\nbytes 52..56 the expiry (`validTo`) as a `uint32` unix epoch timestamp.",
 			"default": "0xff2e2e54d178997f173266817c1e9ed6fee1a1aae4b43971c53b543cffcc2969845c6f5599fbb25dbdd1b9b013daf85c03f3c63763e4bc4a",
 			"type": "string",
+			"description": "Unique identifier for the order: 56 bytes encoded as hex with `0x`\nprefix.\n\nBytes 0..32 are the order digest, bytes 30..52 the owner address and\nbytes 52..56 the expiry (`validTo`) as a `uint32` unix epoch timestamp.",
 			"displayOptions": {
 				"show": {
 					"resource": [

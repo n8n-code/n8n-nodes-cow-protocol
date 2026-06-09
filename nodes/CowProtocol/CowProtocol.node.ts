@@ -3,14 +3,14 @@ import { defaultDescription } from './resources/default';
 
 export class CowProtocol implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'cow-protocol',
+		displayName: 'Cow Protocol',
 		name: 'N8nDevCowProtocol',
 		icon: { light: 'file:./cow-protocol.png', dark: 'file:./cow-protocol.dark.png' },
 		group: ['input'],
 		version: 1,
 		subtitle: '={{\$parameter["operation"] + ": " + \$parameter["resource"]}}',
-		description: 'CoW Protocol batch auction DEX aggregator with MEV protection for gasless and secure token swaps across multiple chains',
-		defaults: { name: 'cow-protocol' },
+		description: 'CoW Protocol batch auction DEX aggregator with MEV protection for gasless, secure cross-chain token swaps.',
+		defaults: { name: 'Cow Protocol' },
 		usableAsTool: true,
 		inputs: [NodeConnectionTypes.Main],
 		outputs: [NodeConnectionTypes.Main],
