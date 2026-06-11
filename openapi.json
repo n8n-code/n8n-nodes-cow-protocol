@@ -665,8 +665,25 @@
               }
             }
           },
+          "403": {
+            "description": "Forbidden, the order owner is deny-listed (`errorType`: `Forbidden`).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PriceEstimationError"
+                }
+              }
+            }
+          },
           "404": {
-            "description": "No route was found for the specified order."
+            "description": "No route was found for the specified order (`errorType`: `NoLiquidity`).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PriceEstimationError"
+                }
+              }
+            }
           },
           "422": {
             "description": "Unable to parse request body as valid JSON."
@@ -675,7 +692,14 @@
             "description": "Too many order quotes."
           },
           "500": {
-            "description": "Unexpected error quoting an order."
+            "description": "Unexpected error (`errorType`: `InternalServerError`).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PriceEstimationError"
+                }
+              }
+            }
           }
         }
       }
@@ -2283,19 +2307,39 @@
         ]
       },
       "PriceEstimationError": {
+        "description": "Error quoting an order.\n\nPossible `errorType` values per HTTP status:\n* 400: `AppDataHashMismatch`, `CustomSolverError`, `ExcessiveValidTo`,\n  `InsufficientLiquidity`, `InsufficientValidTo`, `InvalidAppData`,\n  `InvalidNativeSellToken`, `QuoteNotVerified`, `SameBuyAndSellToken`,\n  `SellAmountDoesNotCoverFee`, `TokenTemporarilySuspended`,\n  `TradingOutsideAllowedWindow`, `UnsupportedBuyTokenDestination`,\n  `UnsupportedOrderType`, `UnsupportedSellTokenSource`,\n  `UnsupportedToken`\n* 403: `Forbidden`\n* 404: `NoLiquidity`\n* 500: `InternalServerError`\n",
         "type": "object",
         "properties": {
           "errorType": {
             "type": "string",
             "enum": [
-              "QuoteNotVerified",
-              "UnsupportedToken",
+              "AppDataHashMismatch",
+              "CustomSolverError",
+              "ExcessiveValidTo",
+              "Forbidden",
+              "InsufficientLiquidity",
+              "InsufficientValidTo",
+              "InternalServerError",
+              "InvalidAppData",
+              "InvalidNativeSellToken",
               "NoLiquidity",
-              "UnsupportedOrderType"
+              "QuoteNotVerified",
+              "SameBuyAndSellToken",
+              "SellAmountDoesNotCoverFee",
+              "TokenTemporarilySuspended",
+              "TradingOutsideAllowedWindow",
+              "UnsupportedBuyTokenDestination",
+              "UnsupportedOrderType",
+              "UnsupportedSellTokenSource",
+              "UnsupportedToken"
             ]
           },
           "description": {
             "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "description": "Optional error-specific payload: `SellAmountDoesNotCoverFee` returns an object with `fee_amount`."
           }
         },
         "required": [
