@@ -54,7 +54,7 @@ That's it. No configuration files. No code. It just works.
 ## Resources
 
 <details>
-<summary><b>Default</b> (22 operations)</summary>
+<summary><b>Default</b> (23 operations)</summary>
 
 - Post Create a new order In order to replace an existing order with a new one the appData must contain a valid replacement order UID HTTPS github com cowprotocol app data blob main src schemas v1 1 0 JSON L62 then the indicated order is cancelled and a new one placed This allows an old order to be cancelled AND a new order to be created in an atomic operation with a single signature This may be useful for replacing orders when on chain prices move outside of the original order s limit price
 - Delete Cancel multiple orders by marking them invalid with a timestamp
@@ -67,6 +67,7 @@ That's it. No configuration files. No code. It just works.
 - Get orders of one user paginated
 - Get native price for the given token
 - Post Quote a price and fee for the specified order parameters
+- Post Stream quotes from individual solvers as they arrive
 - Get information about a solver competition
 - Get information about solver competition
 - Get information about the most recent solver competition

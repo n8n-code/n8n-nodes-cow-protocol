@@ -147,6 +147,18 @@ export const defaultDescription: INodeProperties[] = [
 					}
 				},
 				{
+					"name": "Quote Stream",
+					"value": "Quote Stream",
+					"action": "Stream quotes from individual solvers as they arrive.",
+					"description": "Accepts the same request body as `POST /api/v1/quote`. Instead of waiting for all solvers and returning the single best quote, this endpoint opens a Server-Sent Events stream and emits one event per quote as solvers respond. Solvers without a usable quote emit no event, so you may receive fewer events than there are solvers. The stream closes when the quote timeout elapses or all solvers have responded. Each event's `id` is always `null`. Clients can use this to show progressive quote updates in real time.\n\nThe `priceQuality` field of the request body is ignored: this endpoint always queries all solvers and attempts verification, emitting each result with its own `verified` flag. If no solver returns a usable quote, a terminal event named `error` is sent with a `PriceEstimationError` body before the stream closes.\n",
+					"routing": {
+						"request": {
+							"method": "POST",
+							"url": "=/api/v1/quote/stream"
+						}
+					}
+				},
+				{
 					"name": "Get Solver Competition By Auction ID v2",
 					"value": "Get Solver Competition By Auction ID v2",
 					"action": "Get information about a solver competition.",
@@ -548,7 +560,7 @@ export const defaultDescription: INodeProperties[] = [
 			"name": "sellTokenBalance",
 			"type": "options",
 			"default": "erc20",
-			"description": "Where should the `sellToken` be drawn from?",
+			"description": "Where should the `sellToken` be drawn from?\n\n**Only `erc20` is accepted for new orders.** The `internal` and `external`\n(Balancer Vault) sources are deprecated: orders using them are rejected at\ncreation with `UnsupportedSellTokenSource`. The values remain in the enum\nbecause they may still appear on historical orders returned by the API.",
 			"options": [
 				{
 					"name": "Erc 20",
@@ -587,7 +599,7 @@ export const defaultDescription: INodeProperties[] = [
 			"name": "buyTokenBalance",
 			"type": "options",
 			"default": "erc20",
-			"description": "Where should the `buyToken` be transferred to?",
+			"description": "Where should the `buyToken` be transferred to?\n\n**Only `erc20` is accepted for new orders.** The `internal` (Balancer Vault)\ndestination is rejected at creation with `UnsupportedBuyTokenDestination`.\nThe value remains in the enum because it may still appear on historical\norders returned by the API.",
 			"options": [
 				{
 					"name": "Erc 20",
@@ -1369,6 +1381,41 @@ export const defaultDescription: INodeProperties[] = [
 			}
 		},
 		{
+			"displayName": "POST /api/v1/quote/stream",
+			"name": "operation",
+			"type": "notice",
+			"typeOptions": {
+				"theme": "info"
+			},
+			"default": "",
+			"displayOptions": {
+				"show": {
+					"resource": [
+						"Default"
+					],
+					"operation": [
+						"Quote Stream"
+					]
+				}
+			}
+		},
+		{
+			"displayName": "POST /api/v1/quote/stream<br/><br/>There's no body available for request, kindly use HTTP Request node to send body",
+			"name": "operation",
+			"type": "notice",
+			"default": "",
+			"displayOptions": {
+				"show": {
+					"resource": [
+						"Default"
+					],
+					"operation": [
+						"Quote Stream"
+					]
+				}
+			}
+		},
+		{
 			"displayName": "GET /api/v2/solver_competition/{auction_id}",
 			"name": "operation",
 			"type": "notice",
@@ -1874,7 +1921,7 @@ export const defaultDescription: INodeProperties[] = [
 			"name": "sellTokenBalance",
 			"type": "options",
 			"default": "erc20",
-			"description": "Where should the `sellToken` be drawn from?",
+			"description": "Where should the `sellToken` be drawn from?\n\n**Only `erc20` is accepted for new orders.** The `internal` and `external`\n(Balancer Vault) sources are deprecated: orders using them are rejected at\ncreation with `UnsupportedSellTokenSource`. The values remain in the enum\nbecause they may still appear on historical orders returned by the API.",
 			"options": [
 				{
 					"name": "Erc 20",
@@ -1913,7 +1960,7 @@ export const defaultDescription: INodeProperties[] = [
 			"name": "buyTokenBalance",
 			"type": "options",
 			"default": "erc20",
-			"description": "Where should the `buyToken` be transferred to?",
+			"description": "Where should the `buyToken` be transferred to?\n\n**Only `erc20` is accepted for new orders.** The `internal` (Balancer Vault)\ndestination is rejected at creation with `UnsupportedBuyTokenDestination`.\nThe value remains in the enum because it may still appear on historical\norders returned by the API.",
 			"options": [
 				{
 					"name": "Erc 20",

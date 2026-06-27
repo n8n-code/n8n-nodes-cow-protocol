@@ -704,6 +704,58 @@
         }
       }
     },
+    "/api/v1/quote/stream": {
+      "post": {
+        "operationId": "quoteStream",
+        "summary": "Stream quotes from individual solvers as they arrive.",
+        "description": "Accepts the same request body as `POST /api/v1/quote`. Instead of waiting for all solvers and returning the single best quote, this endpoint opens a Server-Sent Events stream and emits one event per quote as solvers respond. Solvers without a usable quote emit no event, so you may receive fewer events than there are solvers. The stream closes when the quote timeout elapses or all solvers have responded. Each event's `id` is always `null`. Clients can use this to show progressive quote updates in real time.\n\nThe `priceQuality` field of the request body is ignored: this endpoint always queries all solvers and attempts verification, emitting each result with its own `verified` flag. If no solver returns a usable quote, a terminal event named `error` is sent with a `PriceEstimationError` body before the stream closes.\n",
+        "requestBody": {
+          "description": "The order parameters to compute quotes for.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrderQuoteRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "A Server-Sent Events stream. Each event's `data` field is a JSON object matching `OrderQuoteResponse`. Events arrive one per quote as solvers respond.\n",
+            "content": {
+              "text/event-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderQuoteResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error quoting order.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PriceEstimationError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No route was found for the specified order."
+          },
+          "422": {
+            "description": "Unable to parse request body as valid JSON."
+          },
+          "429": {
+            "description": "Too many order quotes."
+          },
+          "500": {
+            "description": "Unexpected error quoting an order."
+          }
+        }
+      }
+    },
     "/api/v2/solver_competition/{auction_id}": {
       "get": {
         "operationId": "getSolverCompetitionByAuctionIdV2",
@@ -1230,7 +1282,7 @@
         ]
       },
       "SellTokenSource": {
-        "description": "Where should the `sellToken` be drawn from?",
+        "description": "Where should the `sellToken` be drawn from?\n\n**Only `erc20` is accepted for new orders.** The `internal` and `external`\n(Balancer Vault) sources are deprecated: orders using them are rejected at\ncreation with `UnsupportedSellTokenSource`. The values remain in the enum\nbecause they may still appear on historical orders returned by the API.",
         "type": "string",
         "enum": [
           "erc20",
@@ -1239,7 +1291,7 @@
         ]
       },
       "BuyTokenDestination": {
-        "description": "Where should the `buyToken` be transferred to?",
+        "description": "Where should the `buyToken` be transferred to?\n\n**Only `erc20` is accepted for new orders.** The `internal` (Balancer Vault)\ndestination is rejected at creation with `UnsupportedBuyTokenDestination`.\nThe value remains in the enum because it may still appear on historical\norders returned by the API.",
         "type": "string",
         "enum": [
           "erc20",
@@ -1370,6 +1422,7 @@
             "type": "boolean"
           },
           "sellTokenBalance": {
+            "deprecated": true,
             "description": "Where the sell token should be drawn from. Defaults to `erc20` for standard ERC-20 token transfers.\n",
             "allOf": [
               {
@@ -1379,6 +1432,7 @@
             "default": "erc20"
           },
           "buyTokenBalance": {
+            "deprecated": true,
             "description": "Where the buy token should be transferred to. Defaults to `erc20` for standard ERC-20 token transfers.\n",
             "allOf": [
               {
@@ -1482,6 +1536,7 @@
             "type": "boolean"
           },
           "sellTokenBalance": {
+            "deprecated": true,
             "description": "see `OrderParameters::sellTokenBalance`",
             "allOf": [
               {
@@ -1491,6 +1546,7 @@
             "default": "erc20"
           },
           "buyTokenBalance": {
+            "deprecated": true,
             "description": "see `OrderParameters::buyTokenBalance`",
             "allOf": [
               {
@@ -1867,6 +1923,7 @@
             }
           },
           "sellTokenBalance": {
+            "deprecated": true,
             "description": "see `OrderParameters::sellTokenBalance`",
             "allOf": [
               {
@@ -1876,6 +1933,7 @@
             "default": "erc20"
           },
           "buyTokenBalance": {
+            "deprecated": true,
             "description": "see `OrderParameters::buyTokenBalance`",
             "allOf": [
               {
@@ -2521,6 +2579,7 @@
                 ]
               },
               "sellTokenBalance": {
+                "deprecated": true,
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/SellTokenSource"
@@ -2529,6 +2588,7 @@
                 "default": "erc20"
               },
               "buyTokenBalance": {
+                "deprecated": true,
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/BuyTokenDestination"
@@ -3522,6 +3582,7 @@
             ]
           },
           "sellTokenBalance": {
+            "deprecated": true,
             "description": "Where the sell token should be drawn from.",
             "allOf": [
               {
@@ -3530,6 +3591,7 @@
             ]
           },
           "buyTokenBalance": {
+            "deprecated": true,
             "description": "Where the buy token should be transferred to.",
             "allOf": [
               {
