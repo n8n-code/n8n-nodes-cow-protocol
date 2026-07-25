@@ -2607,6 +2607,11 @@
                 ],
                 "default": "verified"
               },
+              "fastPath": {
+                "description": "Signals that this quote is intended for fast-path (out-of-competition) execution. Propagated to the solver.\n",
+                "type": "boolean",
+                "default": false
+              },
               "signingScheme": {
                 "allOf": [
                   {
