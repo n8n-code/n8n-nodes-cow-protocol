@@ -67,7 +67,7 @@ That's it. No configuration files. No code. It just works.
 - Get orders of one user paginated
 - Get native price for the given token
 - Post Quote a price and fee for the specified order parameters
-- Post Stream quotes from individual solvers as they arrive
+- Post Stream progressively improving quotes as solvers respond
 - Get information about a solver competition
 - Get information about solver competition
 - Get information about the most recent solver competition
