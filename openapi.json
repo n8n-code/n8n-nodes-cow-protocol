@@ -1760,6 +1760,11 @@
             "type": "string",
             "nullable": true
           },
+          "validFrom": {
+            "description": "Earliest time (unix seconds) at which the order may enter a batch auction, taken from the order's `appData`. Omitted when the order has no lower bound (eligible immediately).\n",
+            "type": "integer",
+            "nullable": true
+          },
           "settlementContract": {
             "description": "The address of the CoW Protocol settlement contract that this order is valid for. Orders are only valid on the settlement contract they were signed for.\n",
             "allOf": [
