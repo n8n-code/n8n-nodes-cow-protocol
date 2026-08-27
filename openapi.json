@@ -2370,7 +2370,7 @@
         ]
       },
       "PriceEstimationError": {
-        "description": "Error quoting an order.\n\nPossible `errorType` values per HTTP status:\n* 400: `AppDataHashMismatch`, `CustomSolverError`, `ExcessiveValidTo`,\n  `InsufficientLiquidity`, `InsufficientValidTo`, `InvalidAppData`,\n  `InvalidNativeSellToken`, `QuoteNotVerified`, `SameBuyAndSellToken`,\n  `SellAmountDoesNotCoverFee`, `TokenTemporarilySuspended`,\n  `TradingOutsideAllowedWindow`, `UnsupportedBuyTokenDestination`,\n  `UnsupportedOrderType`, `UnsupportedSellTokenSource`,\n  `UnsupportedToken`\n* 403: `Forbidden`\n* 404: `NoLiquidity`\n* 500: `InternalServerError`\n",
+        "description": "Error quoting an order.\n\nPossible `errorType` values per HTTP status:\n* 400: `AppDataHashMismatch`, `ExcessiveValidTo`,\n  `InsufficientLiquidity`, `InsufficientValidTo`, `InvalidAppData`,\n  `InvalidNativeSellToken`, `QuoteNotVerified`, `SameBuyAndSellToken`,\n  `SellAmountDoesNotCoverFee`, `TokenTemporarilySuspended`,\n  `TradingOutsideAllowedWindow`, `UnsupportedBuyTokenDestination`,\n  `UnsupportedOrderType`, `UnsupportedSellTokenSource`,\n  `UnsupportedToken`\n* 403: `Forbidden`\n* 404: `NoLiquidity`\n* 500: `InternalServerError`\n",
         "type": "object",
         "properties": {
           "errorType": {
