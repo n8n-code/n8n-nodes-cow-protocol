@@ -1299,7 +1299,7 @@
         ]
       },
       "PriceQuality": {
-        "description": "How good should the price estimate be?\n\nFast: The price estimate is chosen among the fastest N price estimates.\nOptimal: The price estimate is chosen among all price estimates.\nVerified: The price estimate is chosen among all verified/simulated\nprice estimates.\n\n**NOTE**: Orders are supposed to be created from `verified` or `optimal`\nprice estimates.",
+        "description": "How good should the price estimate be?\n\nFast: The price estimate is chosen among the fastest N price estimates.\nEstimates do not get verified by simulation.\nOptimal: The price estimate is chosen among all price estimates, ranked\npurely by the promised price. Estimates do not get verified by simulation.\nVerified: All price estimates get verified by simulation whenever\npossible and verified estimates are preferred over unverified ones,\neven when an unverified estimate promises a better price. The\nresponse's `verified` flag indicates whether the returned estimate\nwas actually verified.\n\n**NOTE**: Orders are supposed to be created from `verified` or `optimal`\nprice estimates.",
         "type": "string",
         "enum": [
           "fast",
