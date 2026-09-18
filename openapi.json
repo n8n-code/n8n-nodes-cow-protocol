@@ -1769,7 +1769,7 @@
             "nullable": true
           },
           "validFrom": {
-            "description": "Earliest time (unix seconds) at which the order may enter a batch auction, taken from the order's `appData`. Omitted when the order has no lower bound (eligible immediately).\n",
+            "description": "Earliest time (unix seconds) at which the order may enter a batch auction, taken from the order's `appData`. Omitted when the order has no lower bound (eligible immediately). Mutually exclusive with `enableFastPath`: an order that sets both is rejected.\n",
             "type": "integer",
             "nullable": true
           },
@@ -2652,7 +2652,7 @@
                 "default": "verified"
               },
               "fastPath": {
-                "description": "Signals that this quote is intended for fast-path (out-of-competition) execution. Propagated to the solver.\n",
+                "description": "Signals that this quote is intended for fast-path (out-of-competition) execution. Propagated to the solver. Mutually exclusive with the `appData` `validFrom` field: an order that sets both is rejected.\n",
                 "type": "boolean",
                 "default": false
               },
