@@ -708,7 +708,7 @@
       "post": {
         "operationId": "quoteStream",
         "summary": "Stream progressively improving quotes as solvers respond.",
-        "description": "Accepts the same request body as `POST /api/v1/quote`. Instead of waiting for all solvers and returning the single best quote, this endpoint opens a Server-Sent Events stream and emits quotes as solvers respond. A quote is emitted only when it ranks better than the best one already sent; the first goes out as soon as the fastest solver answers. Solvers without a usable quote, and quotes that do not beat the best already sent, emit no event, so you may receive fewer events than there are solvers. The stream closes when the quote timeout elapses or all solvers have responded. Each emitted quote carries an `id` that can be referenced when placing an order.\nThe `priceQuality` field of the request body is ignored: this endpoint always queries all solvers and attempts verification, and each emitted quote carries its own `verified` flag. A verified quote ranks above an unverified one regardless of amount, so a later quote may report a lower `out_amount`. Individual solver errors are not streamed; if no solver returns a usable quote, a terminal event named `error` is sent with a `PriceEstimationError` body before the stream closes.\n",
+        "description": "Accepts the same request body as `POST /api/v1/quote`. Instead of waiting for all solvers and returning the single best quote, this endpoint opens a Server-Sent Events stream and emits quotes as solvers respond. A quote is emitted only when it ranks better than the best one already sent; the first goes out as soon as the fastest solver answers. Solvers without a usable quote, and quotes that do not beat the best already sent, emit no event, so you may receive fewer events than there are solvers. The stream closes when the quote timeout elapses or all solvers have responded. Each emitted quote carries an `id` that can be referenced when placing an order.\nThe `priceQuality` field uses the same estimator and ranking semantics as `POST /api/v1/quote`. `verified` attempts verification and prefers a verified quote over an unverified one regardless of amount, so a later quote may report a lower `out_amount`. `optimal` skips verification and ranks all responses by their promised price. `fast` is not supported because the streaming endpoint already returns the first usable quote as soon as it arrives. Individual solver errors are not streamed; if no solver returns a usable quote, a terminal event named `error` is sent with a `PriceEstimationError` body before the stream closes.\n",
         "requestBody": {
           "description": "The order parameters to compute quotes for.",
           "required": true,
@@ -2409,7 +2409,7 @@
         ]
       },
       "PriceEstimationError": {
-        "description": "Error quoting an order.\n\nPossible `errorType` values per HTTP status:\n* 400: `AppDataHashMismatch`, `ExcessiveValidTo`,\n  `InsufficientLiquidity`, `InsufficientValidTo`, `InvalidAppData`,\n  `InvalidNativeSellToken`, `QuoteNotVerified`, `SameBuyAndSellToken`,\n  `SellAmountDoesNotCoverFee`, `TokenTemporarilySuspended`,\n  `TradingOutsideAllowedWindow`, `UnsupportedBuyTokenDestination`,\n  `UnsupportedOrderType`, `UnsupportedSellTokenSource`,\n  `UnsupportedToken`\n* 403: `Forbidden`\n* 404: `NoLiquidity`\n* 500: `InternalServerError`\n",
+        "description": "Error quoting an order.\n\nPossible `errorType` values per HTTP status:\n* 400: `AppDataHashMismatch`, `ExcessiveValidTo`,\n  `InsufficientLiquidity`, `InsufficientValidTo`, `InvalidAppData`,\n  `InvalidNativeSellToken`, `QuoteNotVerified`, `SameBuyAndSellToken`,\n  `SellAmountDoesNotCoverFee`, `TokenTemporarilySuspended`,\n  `TradingOutsideAllowedWindow`, `UnsupportedBuyTokenDestination`,\n  `UnsupportedOrderType`, `UnsupportedPriceQuality`,\n  `UnsupportedSellTokenSource`,\n  `UnsupportedToken`\n* 403: `Forbidden`\n* 404: `NoLiquidity`\n* 500: `InternalServerError`\n",
         "type": "object",
         "properties": {
           "errorType": {
@@ -2432,6 +2432,7 @@
               "TradingOutsideAllowedWindow",
               "UnsupportedBuyTokenDestination",
               "UnsupportedOrderType",
+              "UnsupportedPriceQuality",
               "UnsupportedSellTokenSource",
               "UnsupportedToken"
             ]
