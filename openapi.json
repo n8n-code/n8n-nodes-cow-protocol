@@ -1157,7 +1157,7 @@
           }
         },
         "required": [
-          "appData"
+          "fullAppData"
         ]
       },
       "BigUint": {

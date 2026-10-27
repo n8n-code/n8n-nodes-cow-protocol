@@ -1601,6 +1601,7 @@ export const defaultDescription: INodeProperties[] = [
 			}
 		},
 		{
+			"required": true,
 			"displayName": "Full App Data",
 			"name": "fullAppData",
 			"type": "string",
@@ -1645,6 +1646,7 @@ export const defaultDescription: INodeProperties[] = [
 			}
 		},
 		{
+			"required": true,
 			"displayName": "Full App Data",
 			"name": "fullAppData",
 			"type": "string",
