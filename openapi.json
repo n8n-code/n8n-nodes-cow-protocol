@@ -86,6 +86,14 @@
       "url": "https://barn.api.cow.fi/ink"
     },
     {
+      "description": "Robinhood Chain (Prod)",
+      "url": "https://api.cow.fi/robinhood"
+    },
+    {
+      "description": "Robinhood Chain (Staging)",
+      "url": "https://barn.api.cow.fi/robinhood"
+    },
+    {
       "description": "Sepolia (Prod)",
       "url": "https://api.cow.fi/sepolia"
     },
